@@ -13,7 +13,7 @@ class EmployeeViewSetPagination(PageNumberPagination):
 
 class EmployeeViewSet(viewsets.ModelViewSet):
     """Allows to filter query by last_name and department id"""
-    queryset = Employee.objects.all().prefetch_related()
+    queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
     permission_classes = [permissions.IsAuthenticated,]
     filter_backends = (DjangoFilterBackend,)
@@ -23,7 +23,7 @@ class EmployeeViewSet(viewsets.ModelViewSet):
 
 class DepartmentListView(generics.ListAPIView):
     """Returns all departments"""
-    queryset = Department.objects.all().prefetch_related()
+    queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
     permission_classes = [permissions.AllowAny,]
 
